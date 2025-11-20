@@ -1,7 +1,14 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { TagResponse, SuggestionResponse, MovieSuggestion } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Ensure API Key is present before initializing. 
+// NOTE: In a Vite/Next.js setup, ensure 'process.env.API_KEY' is defined in your bundler config.
+const apiKey = process.env.API_KEY;
+if (!apiKey) {
+  console.error("CineMatch AI: API_KEY is missing from environment variables.");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey || "dummy-key" });
 
 export const generateTagsFromMovies = async (movies: string[]): Promise<string[]> => {
   const prompt = `
