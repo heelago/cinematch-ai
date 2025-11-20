@@ -1,0 +1,5 @@
+{
+  "name": "CineMatch AI",
+  "description": "A sleek movie recommendation engine that analyzes your favorites, extracts specific traits you love, and suggests new films based on Reddit and Rotten Tomatoes consensus.",
+  "requestFramePermissions": []
+}
