@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node --test tests/geminiService.test.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "@google/genai": "^1.30.0"
+    "@google/genai": "^2.3.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

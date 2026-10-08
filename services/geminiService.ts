@@ -1,4 +1,4 @@
-import { GoogleGenAI, Type, Schema } from "@google/genai";
+import { GoogleGenAI, Type, Schema, ThinkingLevel } from "@google/genai";
 import { TagResponse, SuggestionResponse, MovieSuggestion } from "../types";
 
 // Ensure API Key is present before initializing. 
@@ -31,12 +31,12 @@ export const generateTagsFromMovies = async (movies: string[]): Promise<string[]
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.8-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
         responseSchema: schema,
-        temperature: 0.7,
+        thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
       },
     });
 
@@ -99,12 +99,12 @@ export const getMovieSuggestions = async (
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.8-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
         responseSchema: schema,
-        temperature: 0.7,
+        thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
       },
     });
 
@@ -145,12 +145,12 @@ export const getReplacementSuggestion = async (
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.8-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
         responseSchema: schema,
-        temperature: 0.8, // Slightly higher temperature for variety
+        thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
       },
     });
 
